@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&family=Merienda&display=swap');
+
+body {
+  background: url('/images/fundo.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+h4 {
+  color: #FDF2EE;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 1rem;
+  margin-top: 0;
+  max-width: 600px;
+}
+
+.bg-container {
+  background: rgba(205, 205, 205, 0.55);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 3px );
+  -webkit-backdrop-filter: blur( 3px);
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  width: 30%;
+  height: 35rem;
+  min-height: auto;
+  border-radius: 50px;
+  font-family: 'Inder', sans-serif;
+  margin-top: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* Align content vertically */
+  padding: 2rem;
+}
+
+.bg-container2 {
+    background: rgba(205, 205, 205, 0.55);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px);
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 40%;
+    height: 30rem;
+    min-height: auto;
+    border-radius: 50px;
+    font-family: 'Inder', sans-serif;
+    margin-top: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Align content vertically */
+    padding: 2rem;
+  }
+
+h1 {
+  color: #FDF2EE;
+  font-family: 'Merienda', cursive;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1rem; /* Add space below h1 */
+}
+
+.form-control {
+  border-radius: 30px;
+  padding-left:20px;
+  height: 6vh;
+  border: none;
+  width: 90%; /* Full width */
+  margin: 10px 0; /* Add vertical spacing */
+}
+
+.form-control2 {
+    border-radius: 30px;
+    padding-left:20px;
+    height: 6vh;
+    border: none;
+    width: 90%; /* Full width */
+    margin: 10px 0; /* Add vertical spacing */
+  }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      
+      .form-control2::placeholder,.form-control::placeholder{
+    
+    color: #e74c3c;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-size: 17px;
+        font-family: 'Inder', sans-serif;
+    }
+    .form-control:focus {
+        border-color: #ffffff;
+        outline: none; 
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      }
+    a{
+        color: #FDF2EE;
+        text-decoration: none;
+        outline: none;
+        transition: color 0.3s ease, transform 0.3s ease; 
+    }
+    a:hover{
+        color: #e74c3c;
+        text-decoration: none;
+        outline: none;
+        transform: scale(1.1);
+    }
+    .bg-custom{
+    
+    text-align: center;
+    color: #FDF2EE;
+    border-radius: 30px;
+    background: #da5427;
+    font-family: 'Merienda', cursive;
+    height: 6vh;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    width: 15rem;
+    line-height: normal;
+     
+     box-shadow: 0px 0px 0px 3px #C93D0E;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    .bg-custom:hover{
+    color: #FDF2EE;
+        background-color: #e74c3c;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+    }
+    @media (max-width: 2200px) {
+
+        .back-button {
+          
+          position: absolute;
+          top:0.8rem;
+          right:0.8rem;
+         
+        }
+      }
+
+      @media (max-width: 1200px) {
+        /* Apply styles for screens with a max width of 1200px */
+        .bg-container, .bg-container2 {
+          width: 50%; /* Adjust the width for smaller screens */
+          padding: 1rem; /* Reduce padding for smaller screens */
+        }
+        
+        /* Adjust other styles as needed for smaller screens */
+      }
+      
+      @media (max-width: 800px) {
+        /* Apply styles for screens with a max width of 800px */
+        .bg-container, .bg-container2 {
+          width: 95%; /* Adjust the width for even smaller screens */
+          padding: 0.5rem; /* Reduce padding further for smaller screens */
+        }
+        
+        /* Adjust other styles as needed for even smaller screens */
+      }
