@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&family=Merienda&display=swap');
+.body{
+   
+    background: url('/images/fundo.jpg');
+    background-size: cover; 
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+width: auto;
+}
+.back-button {
+  position: absolute;
+  top:12.2rem;
+  right:12.6rem;
+
+}
+h1{
+    margin: 0;
+    font-family: 'Merienda', cursive;
+    color: #FFF;
+font-size: 40px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+*{
+   font-family: 'Inder', sans-serif; 
+}
+.btn{
+    color: #C93D0E;
+    background-color:hsla(0, 0%, 0%, 0.0);
+    border: none;
+    box-shadow: none;
+    
+}
+.btn:hover{
+    color: #C93D0E;
+    background-color:hsla(0, 0%, 0%, 0.0);
+    border: none;
+    box-shadow: none;
+    
+}
+
+
+.fechar{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+.papper {
+    
+    min-height: auto;
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 40rem;
+    text-align: start;
+    background: #ffffff;
+    background-image: linear-gradient(#ffffff 1.1rem, #ccc 1.3rem);
+    background-size: 100% 1.2rem;
+    border-radius: 10px;
+    
+  }
+  i{
+    width: 1rem;
+  }
+  .papper::before,
+  .papper::after {
+    position: absolute;
+    content: "";
+    bottom: 10px;
+    width: 40%;
+    height: 10px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+  
+  .papper::before {
+    left: 15px;
+    transform: skew(-5deg) rotate(-5deg);
+  }
+  
+  .papper::after {
+    right: 15px;
+    transform: skew(5deg) rotate(5deg);
+  }
+  
+  .papper:hover::before,
+  .papper:hover::after {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+  }
+
+ label {
+    color: #C93D0E;
+font-size: 15px;
+text-align: start;
+  }
+textarea::placeholder,input::placeholder{
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: rgba(201, 61, 14, 0.50);
+}
+
+  .input-field input[type=text]{
+    border-bottom: 1px solid #C93D0E!important;
+    box-shadow: 0 1px 0 0 #C93D0E !important;
+    width: 28rem !important;
+  }
+
+  .input-field textarea{
+    border-bottom: 1px solid #C93D0E!important;
+    box-shadow: 0 1px 0 0 #C93D0E!important;
+    color: #000000 !important;
+    width: 28rem !important;
+  }
+
+
+  .input-field input[type=text]:focus {
+
+    border-bottom: 1px solid#C93D0E !important;
+    box-shadow: 0 1px 0 0 #C93D0E !important;
+  }
+
+.input-field textarea.valid{
+    background-color: transparent;
+}
+
+  .input-field input[type=text].valid {
+    background-color: transparent;
+    border-bottom: 1px solid #C93D0E !important;
+    box-shadow: 0 1px 0 0 #C93D0E !important;
+  }
+
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #C93D0E !important;
+    box-shadow: 0 1px 0 0 #C93D0E!important;
+  }
+
+  .bg-custom{
+width: auto;
+    text-align: center;
+    color: #FDF2EE;
+    border-radius: 30px;
+    background: #C93D0E;
+   
+    height: 5vh;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+     border: 3px solid #FFF;
+     box-shadow: 0px 0px 0px 3px #C93D0E;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    .bg-custom:hover{
+    color: #FDF2EE;
+        background-color: #e74c3c;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+    }
+
+img{
+    border-radius: 20px;
+    border: 2px solid #C93D0E;
+    box-shadow: 0px 4px 15px 0px rgba(201, 61, 14, 0.50);
+
+}
+
+
+
+
+
+
+
+
+@media (max-width:1200px){
+
+
+    .papper{
+        width: 20rem;
+    }
+button{
+      width: 5rem;
+  }
+  }
+.meio{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+  @media (max-width: 2200px) {
+    .papper{ width: 40rem;}
+    .back-button {
+      
+      position: absolute;
+      top:1rem;
+      right:1rem;
+     
+    }
+  }
+  @media (max-width:500px){
+    .papper{
+        width: 25rem;
+    }
+}

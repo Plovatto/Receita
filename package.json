@@ -1,0 +1,38 @@
+{
+  "name": "receitas",
+  "version": "1.0.0",
+  "description": "Projeto mvc de cadastro de receitas ",
+  "main": "dbconfig.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plovatto/Receitas.git"
+  },
+  "author": "Pandora Becker Lovatto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plovatto/Receitas/issues"
+  },
+  "homepage": "https://github.com/Plovatto/Receitas#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-layouts": "^1.0.0",
+    "express-session": "^1.17.3",
+    "md5": "^2.3.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "mysql-server": "^0.0.5",
+    "node": "^20.5.0",
+    "nodemailer": "^6.9.4",
+    "path": "^0.12.7",
+    "short-uuid": "^4.2.2",
+    "uuid": "^9.0.0"
+  }
+}
