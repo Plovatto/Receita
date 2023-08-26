@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 const renderizarFormulario = (req, res) => {
-  res.render('cadastro', { showLogin: false });
+  res.render('login', { showLogin: false });
 };
 
 const criarNovoUsuario = (req, res) => {

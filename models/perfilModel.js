@@ -1,7 +1,7 @@
-const connection = require('../dbConfig');
+const pool = require('../dbConfig');
 
 const buscarUsuarioPorId = (userId, callback) => {
-  connection.query('SELECT * FROM usuarios WHERE id = ?', [userId], (err, results) => {
+  pool.query('SELECT * FROM usuarios WHERE id = ?', [userId], (err, results) => {
     if (err) {
       console.error('Erro ao buscar o usuário:', err);
       return callback(err, null);

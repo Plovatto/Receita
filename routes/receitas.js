@@ -13,8 +13,6 @@ router.get('/receita/:id', receitasController.exibirDetalhesReceita);
 
 router.get('/receita/editar/:id', receitasController.exibirFormularioEdicao);
 router.post('/receita/editar/:id', upload.single('imagem'), receitasController.atualizarReceita);
-
-
 router.post('/receita/:id/excluir', receitasController.excluirReceita);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const connection = require('../dbConfig'); 
+const pool = require('../dbConfig'); 
 
 const crypto = require('crypto');
 
@@ -6,7 +6,7 @@ const criarNovoUsuarioNoBanco = (nome, sobrenome, email, senha, dataNascimento, 
   const md5Hash = crypto.createHash('md5');
   const hashedSenha = md5Hash.update(senha).digest('hex');
   
-  connection.query(
+  pool.query(
     'INSERT INTO usuarios (nome, sobrenome, email, senha, data_nascimento) VALUES (?, ?, ?, ?, ?)',
     [nome, sobrenome, email, hashedSenha, dataNascimento],
     (err, result) => {
@@ -22,7 +22,7 @@ const criarNovoUsuarioNoBanco = (nome, sobrenome, email, senha, dataNascimento, 
 };
 
 const buscarUsuarioPorEmail = (email, callback) => {
-  connection.query('SELECT * FROM usuarios WHERE email = ?', [email], (err, results) => {
+  pool.query('SELECT * FROM usuarios WHERE email = ?', [email], (err, results) => {
     if (err) {
       console.error('Erro ao buscar o usuário:', err);
       return callback(err, null);

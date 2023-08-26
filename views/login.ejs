@@ -18,7 +18,7 @@
                 <br><h1 class="text-center">Login</h1>
                 <br>
                 <br><br>
-                <input type="email" name="email" id="email" autocomplete="off" class="form-control" placeholder="Email" required>
+                <input type="email" name="email" id="email" autocomplete="email"  class="form-control" placeholder="Email" required>
                 <br>
                 <div class="password-container">
                   <input type="password" name="senha" class="form-control" placeholder="Senha" id="senha1" required>
@@ -38,7 +38,7 @@
           </div>
           <div class="flip-card__back">
             <div class="container-fluid bg-container d-flex align-items-center justify-content-center">
-              <form action="/cadastro/submit" class="flip-card__form">
+              <form action="/cadastro/submit" method="post" class="flip-card__form">
                 <h2 class="text-center">Cadastro</h2>
                 <br>
                 <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" required>

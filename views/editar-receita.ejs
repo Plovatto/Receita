@@ -1,9 +1,9 @@
-
+  
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet" href="/styles/criar.css">  
+<link rel="stylesheet" href="/styles/criar.css">
 
-<div class="body">
+<body class="body">
    
     <h1>Editar Receita</h1>
     <br>
@@ -34,20 +34,10 @@
         <textarea id="descricao" name="descricao" rows="4" class="materialize-textarea"><%= receita.descricao %></textarea> 
         </div>
 
-       
-
-    <div class="file-field  input-field">
-      <div class="btn">
-        <div class="file-field input-field">
-                <i class="material-icons">perm_media</i>
-        <input type="file"  id="imagem" name="imagem" accept="image/*"  ></div>
-      </div>
-
-      <div class="file-path-wrapper">
-        <input class="file-path validate" placeholder="Imagem da receita"type="text">
-      </div>
-</div>
-
+        <div class="input-group mb-3">
+          <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03"><i class="material-icons">perm_media</i></button>
+          <input class="form-control" type="file"  name="imagem" accept="image/*"  id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+        </div>
  <br>
         <img src="/images/<%= receita.imagem %>" alt="Imagem da Receita" style="width: 300px; height: auto;">
         <br><br>
@@ -58,4 +48,4 @@
    
 </div>
 <br><br>
-</div>
+</body>

@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+
 const uuid = require('uuid');
 const expressLayouts = require('express-layouts');
 const path = require('path');
@@ -9,9 +10,9 @@ const receitasController = require('./controllers/receitasController');
 const router = express.Router();
 const app = express();
 const port = 3300;
+const flash = require('express-flash');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -29,7 +30,7 @@ app.use(
   })
 );
 
-
+app.use(flash());
 
 app.get('/', (req, res) => {
   res.render('inicio', {
@@ -42,7 +43,9 @@ router.get('/login', (req, res) => {
 router.get('/cadastro', (req, res) => {
   res.render('login', { showLogin: false }); // Pass showLogin as a property
 });
-
+router.get('/sucess', (req, res) => {
+  res.render('sucess');
+});
 
 const cadastroRoutes = require('./routes/cadastro');
 const loginRoutes = require('./routes/login');

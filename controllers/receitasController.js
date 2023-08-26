@@ -1,13 +1,30 @@
 const receitaModel = require('../models/receitaModel');
+const flash = require('express-flash');
 
 const exibirReceitas = (req, res) => {
   if (req.session.loggedin) {
+    const flashMessage = req.flash('success'); // Obtém a mensagem de flash de sucesso
+    const flashError = req.flash('erro'); // Obtém a mensagem de flash de erro
+
+
+    const receitaExcluida = req.query.excluida === 'true';
+
+  
+    const isSearchRequest = req.query.pesquisar !== undefined;
+
     receitaModel.buscarReceitasPorUsuario(req.session.userId, (error, results) => {
       if (error) {
         console.error('Erro ao buscar as receitas:', error);
         return res.status(500).send('Erro interno ao carregar receitas.');
       }
-      res.render('index', { receitas: results });
+
+      // Passa as mensagens de flash e a flag de receita excluída para o template
+      res.render('index', {
+        receitas: results,
+        flash: { success: flashMessage, erro: flashError },
+        receitaExcluida,
+        isSearchRequest
+    });
     });
   } else {
     res.redirect('/login');
@@ -16,11 +33,13 @@ const exibirReceitas = (req, res) => {
 
 const renderizarFormulario = (req, res) => {
   if (req.session.loggedin) {
-    res.render('criar-receita', { usuario_id: req.session.userId });
+    res.render('criar-receita', { usuario_id: req.session.userId, flash: req.flash() }); // Passar o flash
   } else {
     res.redirect('/login');
   }
 };
+
+
 
 const criarReceita = (req, res) => {
   const modoPreparo = req.body.modo_preparo;
@@ -35,17 +54,29 @@ const criarReceita = (req, res) => {
     imagem: req.file ? req.file.filename : null,
   };
 
-  receitaModel.criarReceita(receitaData, (error, novaReceitaId) => {
+  receitaModel.verificarTituloExistentePorUsuario(receitaData.titulo, req.session.userId, (error, tituloExistente) => {
     if (error) {
-      console.error('Erro ao criar a receita:', error);
+      console.error('Erro ao verificar título existente:', error);
       return res.status(500).send('Erro interno ao criar a receita.');
     }
 
-    console.log('Nova receita criada com ID:', novaReceitaId);
-    res.redirect(`/receitas/receita/${novaReceitaId}`);
+    if (tituloExistente) {
+      req.flash('erro', 'Esse título já está em uso. Por favor, escolha outro.');
+      return res.redirect('/receitas/criar-receita');
+    }
+
+    receitaModel.criarReceita(receitaData, (error, novaReceitaId) => {
+      if (error) {
+        console.error('Erro ao criar a receita:', error);
+        req.flash('erro', 'Houve um problema na criação de receita');
+        return res.redirect('/receitas/criar-receita');
+      }
+
+      console.log('Nova receita criada com ID:', novaReceitaId);
+      res.render('sucess');
+    });
   });
 };
-
 const exibirDetalhesReceita = (req, res) => {
   const receitaId = req.params.id;
 
@@ -59,10 +90,17 @@ const exibirDetalhesReceita = (req, res) => {
       return res.status(404).send('Receita não encontrada ou não pertence ao usuário logado.');
     }
 
-    res.render('detalhes-receita', { receita });
+    const formatDate = (dateString) => {
+      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      const date = new Date(dateString);
+      return date.toLocaleDateString('pt-BR', options);
+    }
+
+    const flashMessage = req.flash('success'); // Obtém a mensagem de flash de sucesso
+
+    res.render('detalhes-receita', { receita, formatDate, flashMessage }); 
   });
 };
-
 const exibirFormularioEdicao = (req, res) => {
   const receitaId = req.params.id;
 
@@ -79,7 +117,6 @@ const exibirFormularioEdicao = (req, res) => {
     res.render('editar-receita', { receita });
   });
 };
-
 const atualizarReceita = (req, res) => {
   const receitaId = req.params.id;
   const modoPreparo = req.body.modo_preparo;
@@ -102,10 +139,8 @@ const atualizarReceita = (req, res) => {
     };
 
     if (req.file) {
-      
       receitaData.imagem = req.file.filename;
     } else {
-   
       receitaData.imagem = receita.imagem;
     }
 
@@ -116,13 +151,15 @@ const atualizarReceita = (req, res) => {
       }
 
       if (result === true) {
-        console.log('Receita atualizada com sucesso.');
-        res.redirect('/receitas/receita/' + receitaId);
+        // Defina a mensagem de sucesso
+        req.flash('success', 'Receita atualizada com sucesso.');
+        // Redirecione para a página de detalhes da receita
+        res.redirect('/receitas/receita/' + receitaId); 
       } else {
         res.status(404).send('Receita não encontrada ou não pertence ao usuário logado.');
       }
     });
-  });
+  }); 
 };
 
 const excluirReceita = (req, res) => {
@@ -136,12 +173,18 @@ const excluirReceita = (req, res) => {
 
     if (result === true) {
       console.log('Receita excluída com sucesso.');
-      res.redirect('/receitas'); 
+    
+      // Adicionar mensagem de erro ao flash
+      req.flash('erro', 'Receita excluída com sucesso.');
+    
+      // Redirecionar de volta para a página de receitas com o parâmetro de sucesso
+      res.redirect('/receitas?excluida=true'); 
     } else {
       res.status(404).send('Receita não encontrada ou não pertence ao usuário logado.');
     }
   });
 };
+
 
 module.exports = {
   exibirReceitas,
@@ -151,4 +194,5 @@ module.exports = {
   exibirFormularioEdicao,
   atualizarReceita,
   excluirReceita,
+
 };
