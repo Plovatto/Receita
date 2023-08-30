@@ -1,88 +1,102 @@
-
-
-
-
-
-
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet" href="/styles/criar.css"> 
- <body class="body">
+<link rel="stylesheet" href="/styles/criar.css">
 
-      
-
-    <h1>Criar Receita</h1>  
- 
-<br>
+<body class="body">
 
 
-    <div class="papper">   
-      <% if (flash.erro) { %>
-      <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show text-center" id="error-message" role="alert">
-        <i class="material-icons">error</i> 
-        <div><%= flash.erro %></div>
+
+  <h1>Criar Receita</h1>
+
+  <br>
+
+
+  <div class="papper">
+    <% if (flash.erro) { %>
+      <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show text-center"
+        id="error-message" role="alert">
+        <i class="material-icons">error</i>
+        <div>
+          <%= flash.erro %>
+        </div>
       </div>
-    <% } %>
+      <% } %>
         <div class="back-button">
-                <a href="/receitas"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
-              </div>
-    <form action="/receitas/criar-receita" method="post" enctype="multipart/form-data">
+          <a href="/receitas"><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
+        </div>
+        <form action="/receitas/criar-receita" method="post" enctype="multipart/form-data">
 
-<br><br>
-  <label for="Titulo da receita">Titulo da receita</label>
-        <div class="input-field col s6">
-        <input  placeholder="Exemplo: bolo" id="titulo" type="text" name="titulo" required class="validate ">
-              
-              </div>
+          <br><br>
 
 
+          <label for="Titulo da receita">Titulo da receita</label>
+          <div class="input-field col s6">
+            <input placeholder="Exemplo: bolo" id="titulo" type="text" name="titu" required class="validate ">
 
-<label  for="ingredientes">Ingredientes</label>
-<div class="input-field col s12"> 
-        
-        <textarea placeholder="Para separar os ingredientes clique enter" id="ingredientes" name="ingredientes"  required class="materialize-textarea"></textarea>
-       
-      </div>
-
-<label for="modoPreparo">Modo de preparo</label>
-<div class="input-field col s12">
-        <textarea placeholder="Para separar em etapas clique enter" id="modoPreparo" name="modo_preparo" required class="materialize-textarea"></textarea>
-        
-      </div>
-
-<label for="descricao">Descrição da Receita:</label>
-<div class="input-field col s12">
-<textarea placeholder="Uma breve descrição" id="descricao" name="descricao" class="materialize-textarea"></textarea>
-
-</div>
+          </div>
 
 
-<div class="input-group mb-3">
-  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03"><i class="material-icons">perm_media</i></button>
-  <input class="form-control" type="file"  name="imagem" accept="image/*"  id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-</div>
+
+          <label for="ingredientes">Ingredientes</label>
+          <div class="input-field col s12">
+
+            <textarea placeholder="Para separar os ingredientes clique enter" id="ingredientes" name="ingredientes"
+              required class="materialize-textarea"></textarea>
+
+          </div>
+
+          <label for="modoPreparo">Modo de preparo</label>
+          <div class="input-field col s12">
+            <textarea placeholder="Para separar em etapas clique enter" id="modoPreparo" name="modo_preparo" required
+              class="materialize-textarea"></textarea>
+
+          </div>
+
+          <label for="tempoPreparo">Tempo de Preparo</label>
+          <div class="input-field col s6">
+            <input placeholder="Exemplo: 30" id="tempoPreparo" type="time" name="tempo_preparo" required
+              class="validate">
+          </div>
+
+          <label for="descricao">Descrição da Receita:</label>
+          <div class="input-field col s12">
+            <textarea placeholder="Uma breve descrição" id="descricao" name="descricao"
+              class="materialize-textarea"></textarea>
+
+          </div>
 
 
-<br><br> <div class="meio">
+          <div class="input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03"><i id="i"
+                class="material-icons">perm_media</i></button>
+            <input class="form-control" type="file" name="imagem" accept="image/*" id="inputGroupFile03"
+              aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+          </div>
 
 
-<button class="btn bg-custom btn-block text-center" type="submit">Salvar</button>
-      </div>  <br><br>
-       
-      </form>
-</div><br><br>
+          <br><br>
+          <div class="meio">
 
- </body><script>
+
+            <button class="btn bg-custom btn-block text-center" type="submit">Salvar</button>
+          </div> <br><br>
+
+        </form>
+  </div><br><br>
+
+</body>
+<script>
 
   function hideErrorMessage() {
     var errorMessage = document.getElementById('error-message');
     if (errorMessage) {
-      setTimeout(function() {
+      setTimeout(function () {
         errorMessage.style.display = 'none';
         errorMessage.style.visibility = 'hidden';
         errorMessage.style.padding = 0;
         errorMessage.classList.remove('show');
-      }, 6000); 
+      }, 6000);
     }
   }
   document.addEventListener('DOMContentLoaded', hideErrorMessage);

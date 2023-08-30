@@ -2,12 +2,12 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <body>
-  
+
 
   <div class="wrapper">
-   
+
     <div class="card-switch">
-      <label class="switch"> 
+      <label class="switch">
         <input class="toggle" type="checkbox">
         <span class="slider"></span>
         <span class="card-side"></span>
@@ -15,26 +15,31 @@
           <div class="flip-card__front">
             <div class="container-fluid bg-container d-flex align-items-center justify-content-center">
               <form action="/login/submit" method="post">
-                <br><h1 class="text-center">Login</h1>
+                <br>
+                <h1 class="text-center">Login</h1>
                 <br>
                 <br><br>
-                <input type="email" name="email" id="email" autocomplete="email"  class="form-control" placeholder="Email" required>
+                <input type="email" name="email" id="email" autocomplete="email" class="form-control"
+                  placeholder="Email" required>
                 <br>
                 <div class="password-container">
                   <input type="password" name="senha" class="form-control" placeholder="Senha" id="senha1" required>
                   <i class="material-icons password-icon" data-target="senha1">lock_outline</i>
                 </div>
                 <br><br>
-                <% if (typeof errorMessage !== 'undefined') { %>
-                <p class="text-danger text-center"><%= errorMessage %></p>
-                <% } %>
-                <br>
-                <button type="submit" id="entrarBtn" class="btn bg-custom btn-block">Entrar</button>
-                <br><br><br> <br><a href="/redefinir/confirm-email" class="text-center d-block">Esqueceu a senha?</a>
-              
-            
+                <% if (typeof errorMessage !=='undefined' ) { %>
+                  <p class="text-danger text-center">
+                    <%= errorMessage %>
+                  </p>
+                  <% } %>
+                    <br>
+                    <button type="submit" id="entrarBtn" class="btn bg-custom btn-block">Entrar</button>
+                    <br><br><br> <br><a href="/redefinir/confirm-email" class="text-center d-block">Esqueceu a
+                      senha?</a>
+
+
               </form>
-            </div>    
+            </div>
           </div>
           <div class="flip-card__back">
             <div class="container-fluid bg-container d-flex align-items-center justify-content-center">
@@ -43,7 +48,8 @@
                 <br>
                 <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" required>
                 <br>
-                <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome" id="sobrenome" required>
+                <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome" id="sobrenome"
+                  required>
                 <br>
                 <input type="email" name="email" class="form-control" placeholder="Email" id="email" required>
                 <br>
@@ -52,7 +58,8 @@
                   <i class="material-icons password-icon" data-target="senha2">lock_outline</i>
                 </div>
                 <br>
-                <input type="date" name="data_nascimento" class="form-control custom-input-date" class="datepicker" placeholder="Data de Nascimento" id="data_nascimento" required>
+                <input type="date" name="data_nascimento" class="form-control custom-input-date" class="datepicker"
+                  placeholder="Data de Nascimento" id="data_nascimento" required>
                 <br>
                 <br>
                 <button class="btn bg-custom btn-block" type="submit">Cadastrar</button>
@@ -78,7 +85,7 @@
     toggle.addEventListener('mouseenter', () => {
       const targetId = toggle.getAttribute('data-target');
       const passwordField = document.getElementById(targetId);
-      
+
       passwordField.type = 'text';
       toggle.textContent = 'lock_open';
     });

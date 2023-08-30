@@ -1,27 +1,34 @@
 <link rel="stylesheet" href="/styles/perfil.css">
 
 
-<div class="body">
+<body class="body">
   <h1>Perfil</h1>
   <br>
   <div class="papper" draggable="true">
     <div class="back-button">
-    <a href="/receitas"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
-  </div>
-    <p><strong>Nome Completo:</strong> <br>  <br>
-  <%= usuario.nome %> <%= usuario.sobrenome %></p>
-  <br>
+      <a href="/receitas"><img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
+    </div>
+    <p><strong>Nome Completo:</strong> <br> <br>
+      <%= usuario.nome %>
+        <%= usuario.sobrenome %>
+    </p>
+    <br>
 
-  <p><strong>Email:</strong> 
-    <br>  <br>
-  <%= usuario.email %></p>
-  <br>
-  <p><strong>Data de Nascimento:</strong>
-    <br>  <br>
-     <%= formatarData(usuario.data_nascimento) %></p>
-     <br>
-  <br>  
-<form action="/logout" method="get">
-<button type="submit">Sair</button>
-</form></div>
-</div></div>
+    <p><strong>Email:</strong>
+      <br> <br>
+      <%= usuario.email %>
+    </p>
+    <br>
+    <p><strong>Data de Nascimento:</strong>
+      <br> <br>
+      <%= formatarData(usuario.data_nascimento) %>
+    </p>
+    <br>
+    <br>
+    <form action="/logout" method="get">
+      <button type="submit">Sair</button>
+    </form>
+  </div>
+</body>
+</div>

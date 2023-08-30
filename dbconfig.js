@@ -1,19 +1,19 @@
-const mysql = require('mysql2');
+const mysql = require("mysql");
 
 const pool = mysql.createPool({
-  connectionLimit: 10, 
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'receitas',
+  connectionLimit: 10,
+  host: "sql10.freemysqlhosting.net",
+  user: "sql10643420",
+  password: "dpvdCYe7vL",
+  database: "sql10643420",
 });
 
 pool.getConnection((err, connection) => {
   if (err) {
-    console.error('Erro ao conectar com o banco:', err);
+    console.error("Erro ao conectar com o banco:", err);
     return;
   }
-  console.log('Conexão com o banco de dados estabelecida.');
+  console.log("Conexão com o banco de dados estabelecida.");
   connection.release();
 });
 

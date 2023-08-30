@@ -1,51 +1,64 @@
-  
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/styles/criar.css">
 
 <body class="body">
-   
-    <h1>Editar Receita</h1>
-    <br>
-    <div class="papper">
-        <div class="back-button">
-          <a href="/receitas/receita/<%= receita.id %>"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
-              </div>
-  
-<br><br>
+
+  <h1>Editar Receita</h1>
+  <br>
+  <div class="papper">
+    <div class="back-button">
+      <a href="/receitas/receita/<%= receita.id %>"><img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
+    </div>
+
+    <br><br>
     <form action="/receitas/receita/editar/<%= receita.id %>" class="meio" method="post" enctype="multipart/form-data">
-        <label for="titulo">Título:</label>
-        <div class="input-field col s6">
+
+      <label for="titulo">Título:</label>
+      <div class="input-field col s6">
         <input type="text" id="titulo" name="titulo" class="validate " value="<%= receita.titulo %>">
-        </div>
-        
-        <label for="ingredientes">Ingredientes:</label>
-        <div class="input-field col s12"> 
-        <textarea id="ingredientes" name="ingredientes" rows="4" class="materialize-textarea"><%= receita.ingredientes %></textarea>
-        </div>
+      </div>
 
-        <label for="modo_preparo">Modo de Preparo:</label>
-        <div class="input-field col s12"> 
-        <textarea id="modo_preparo" name="modo_preparo" rows="4" class="materialize-textarea"><%= receita.modo_preparo %></textarea>
-        </div>
+      <label for="ingredientes">Ingredientes:</label>
+      <div class="input-field col s12">
+        <textarea id="ingredientes" name="ingredientes" rows="4"
+          class="materialize-textarea"><%= receita.ingredientes %></textarea>
+      </div>
 
-        <label for="descricao">Descrição da Receita:</label>
-        <div class="input-field col s12"> 
-        <textarea id="descricao" name="descricao" rows="4" class="materialize-textarea"><%= receita.descricao %></textarea> 
-        </div>
+      <label for="modo_preparo">Modo de Preparo:</label>
+      <div class="input-field col s12">
+        <textarea id="modo_preparo" name="modo_preparo" rows="4"
+          class="materialize-textarea"><%= receita.modo_preparo %></textarea>
+      </div>
 
-        <div class="input-group mb-3">
-          <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03"><i class="material-icons">perm_media</i></button>
-          <input class="form-control" type="file"  name="imagem" accept="image/*"  id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-        </div>
- <br>
-        <img src="/images/<%= receita.imagem %>" alt="Imagem da Receita" style="width: 300px; height: auto;">
-        <br><br>
-        <button class="btn bg-custom btn-block" type="submit">Salvar Edição</button>
-        <br><br> </form>
+      <label for="tempoPreparo">Tempo de Preparo</label>
+      <div class="input-field col s6">
+        <input type="time" name="tempo_preparo" value="<%= receita.tempo_preparo %>">
+      </div>
 
 
-   
-</div>
-<br><br>
+      <label for="descricao">Descrição da Receita:</label>
+      <div class="input-field col s12">
+        <textarea id="descricao" name="descricao" rows="4"
+          class="materialize-textarea"><%= receita.descricao %></textarea>
+      </div>
+
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03"><i id="i"
+            class="material-icons">perm_media</i></button>
+        <input class="form-control" type="file" name="imagem" accept="image/*" id="inputGroupFile03"
+          aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+      </div>
+      <br>
+      <img src="/images/<%= receita.imagem %>" alt="Imagem da Receita" style="width: 300px; height: auto;">
+      <br><br>
+      <button class="btn bg-custom btn-block" type="submit">Salvar Edição</button>
+      <br><br>
+    </form>
+
+
+
+  </div>
+  <br><br>
 </body>

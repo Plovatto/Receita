@@ -1,128 +1,154 @@
 @import url('https://fonts.googleapis.com/css2?family=Inder&family=Merienda&display=swap');
-.body{
-   
-    background: url('/images/fundo.jpg');
-    background-size: cover; 
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
-width: auto;
+
+.body {
+
+  background: url('/images/fundo.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: auto;
 }
+
 .back-button {
   position: absolute;
-  top:12.2rem;
-  right:12.6rem;
+  top: 12.2rem;
+  right: 12.6rem;
 
 }
-h1{
-    font-family: 'Merienda', cursive;
-    color: #FFF;
-font-size: 40px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
-*{
-   font-family: 'Inder', sans-serif; 
-}
-p{
-    color: rgba(201, 61, 14, 0.50);
-text-align: center;
 
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+body::before {
+  content: "";
+  background: url('/images/fundo.jpg') center center no-repeat;
+  background-size: cover;
+  filter: blur(3px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
-strong{
-    color: #C93D0E;
-text-align: center;
 
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+h1 {
+  font-family: 'Merienda', cursive;
+  color: #FFF;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-button{border-radius: 50px;
-    border: 1px solid #C93D0E;
-    background: #C93D0E;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    width: 10vw;
-    height: 5.5vh;
-    color: #FFF;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+
+* {
+  font-family: 'Inder', sans-serif;
 }
-.fechar{
-    display: flex;
-    align-items: end;
-    justify-content: end;
+
+p {
+  color: rgba(201, 61, 14, 0.50);
+  text-align: center;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
+
+strong {
+  color: #C93D0E;
+  text-align: center;
+
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+button {
+  border-radius: 50px;
+  border: 1px solid #C93D0E;
+  background: #C93D0E;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 10vw;
+  height: 5.5vh;
+  color: #FFF;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.fechar {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
 .papper {
   min-height: 500px;
   position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    width: 23rem;
-    text-align: start;
-    background: #ffffff;
-    background-image: linear-gradient(#ffffff 1.1rem, #ccc 1.3rem);
-    background-size: 100% 1.2rem;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 23rem;
+  text-align: start;
+  background: #ffffff;
+  background-image: linear-gradient(#ffffff 1.1rem, #ccc 1.3rem);
+  background-size: 100% 1.2rem;
+  border-radius: 10px;
 
-  }
-  
-  .papper::before,
-  .papper::after {
-    position: absolute;
-    content: "";
-    bottom: 10px;
-    width: 40%;
-    height: 10px;
-    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
-    z-index: -1;
-    transition: all 0.3s ease;
-  }
-  
-  .papper::before {
-    left: 15px;
-    transform: skew(-5deg) rotate(-5deg);
-  }
-  
-  .papper::after {
-    right: 15px;
-    transform: skew(5deg) rotate(5deg);
-  }
-  
-  .papper:hover::before,
-  .papper:hover::after {
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
-  }
-  @media (max-width:360px){
+}
 
-.papper{
+.papper::before,
+.papper::after {
+  position: absolute;
+  content: "";
+  bottom: 10px;
+  width: 40%;
+  height: 10px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.papper::before {
+  left: 15px;
+  transform: skew(-5deg) rotate(-5deg);
+}
+
+.papper::after {
+  right: 15px;
+  transform: skew(5deg) rotate(5deg);
+}
+
+.papper:hover::before,
+.papper:hover::after {
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width:360px) {
+
+  .papper {
     width: 18rem;
-}}
-@media (max-width:800px){
+  }
+}
 
-button{
-      width: 5rem;
-  }
-  }
+@media (max-width:800px) {
 
-  @media (max-width: 2200px) {
-    .back-button {
-      
-      position: absolute;
-      top:1rem;
-      right:1rem;
-     
-    }
+  button {
+    width: 5rem;
   }
+}
+
+@media (max-width: 2200px) {
+  .back-button {
+
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+  }
+}

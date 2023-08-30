@@ -1,61 +1,68 @@
-<link rel="stylesheet" href="/styles/code.css"> 
+<link rel="stylesheet" href="/styles/code.css">
 
 <body>
-  
 
-<div class="otp-Form" >
+
+  <div class="otp-Form">
     <form action="/redefinir/verify-code" method="POST">
       <input type="hidden" name="email" value="<%= email %>">
-       <div class="labelContainer">
+      <div class="labelContainer">
 
         <div class="back-button">
-          <a href="/redefinir/confirm-email"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
-              </div><br>
-          <h2 for="code">Digite o código recebido:</h2>  
-          <h5>Estamos quase lá! Para prosseguir com a redefinição da senha, insira o código de confirmação que enviamos para o seu endereço de email. Esse passo adicional garantirá a segurança da sua conta.</h5>
-        </div> <div class="inputContainer">
-    
-        <div class="codeInputContainer">
-        <input type="text" class="otp-input" maxlength="1" name="code1" required>
-        <input type="text" class="otp-input" maxlength="1" name="code2" required>
-        <input type="text" class="otp-input" maxlength="1" name="code3" required>
-        <input type="text" class="otp-input" maxlength="1" name="code4" required>
-        <input type="text" class="otp-input" maxlength="1" name="code5" required>
-        <input type="text" class="otp-input" maxlength="1" name="code6" required>
+          <a href="/redefinir/confirm-email"><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3UlEQVR4nM1Wy05CMRDtxldgBhNfS8WlWxdKaGHhxgf6XYrxF3wEUP8CjeJtiXHlyqhfoBs0QVaauTzl3ltavCCTzKad9nRmzkyHsVGXu3U2VU7CruJ4KDkUJMfrukKB1hSHTDHNJkMDlCIWVwLPJIdPJfBbp2QjOZ7Smb4BnzbZhBR4JAXWegF6H4BfFIXHFTZuBXqfjs5KgVe2gD4PKDlrkQUjUDJUHF7/CtoCF/BSSkTm9Z6usrEwPPWC4y2lLhCYcho2aEs5ZgNAY3GXFAMClgJrZR5b9gBTyWhI8kbhMgkp2WruOfE0B12d0oWN/Oc0NrmGTfADOXz8ajJOCvZ6lwZcUl36RUa358PynXaYqeWZ5SnX7bnfmjHJlIALY5J0eGfjqWqfL3QCFy0Z6npp5aloKhRHAvh8iKHO/w+5BB50AEPGxlObvW4tJ2GrBUxFTcU98AYioOL5LGhy0Bx4N22ZZKuxOfb0aicdWxrkJ6E4VkuJ6UXfH8qUZP2oFLDPhj0IKIE3PecvGlNoXAnR0+cHHp3TgrZCvgEztt0siGzGw15T3LrkmO2LcByrlFPr8bZTiIk0OejqvK1QoZIJZC/rQ6jJ0CdejwLkiYSucsjTmpOCbe0kOSryA2oc5naX8ASvAAAAAElFTkSuQmCC"></a>
+        </div><br>
+        <h2 for="code">Digite o código recebido:</h2>
+        <h5>Estamos quase lá! Para prosseguir com a redefinição da senha, insira o código de confirmação que enviamos
+          para o seu endereço de email. Esse passo adicional garantirá a segurança da sua conta.</h5>
       </div>
-      </div><br><p class="error-message"><%= errorMessage %></p><br>
-      
+      <div class="inputContainer">
+
+        <div class="codeInputContainer">
+          <input type="text" class="otp-input" maxlength="1" name="code1" required>
+          <input type="text" class="otp-input" maxlength="1" name="code2" required>
+          <input type="text" class="otp-input" maxlength="1" name="code3" required>
+          <input type="text" class="otp-input" maxlength="1" name="code4" required>
+          <input type="text" class="otp-input" maxlength="1" name="code5" required>
+          <input type="text" class="otp-input" maxlength="1" name="code6" required>
+        </div>
+      </div><br>
+      <p class="error-message">
+        <%= errorMessage %>
+      </p><br>
+
       <button class="verifyButton" type="submit">Verifique</button>
       <br>
-      
+
     </form>
-<form action="/redefinir/reenviar-codigo" method="post">
-      <p class="resendNote">Não recebeu o código? <button class="resendBtn" id="resendCodeBtn">Reenviar Código</button></p>
+    <form action="/redefinir/reenviar-codigo" method="post">
+      <p class="resendNote">Não recebeu o código? <button class="resendBtn" id="resendCodeBtn">Reenviar Código</button>
+      </p>
     </form>
-</div>
+  </div>
 </body>
-  <script>
-    const otpInputs = document.querySelectorAll('.otp-input');
+<script>
+  const otpInputs = document.querySelectorAll('.otp-input');
 
-    otpInputs.forEach((input, index) => {
-      input.addEventListener('input', () => {
-        if (input.value.length === 1 && index < otpInputs.length - 1) {
-          otpInputs[index + 1].focus();
-        }
-      });
-
-      input.addEventListener('paste', (e) => {
-        e.preventDefault();
-        const pastedData = e.clipboardData.getData('text/plain');
-        
-        for (let i = 0; i < pastedData.length && index + i < otpInputs.length; i++) {
-          otpInputs[index + i].value = pastedData[i];
-        }
-        
-        
-        if (index + pastedData.length < otpInputs.length) {
-          otpInputs[index + pastedData.length].focus();
-        }
-      });
+  otpInputs.forEach((input, index) => {
+    input.addEventListener('input', () => {
+      if (input.value.length === 1 && index < otpInputs.length - 1) {
+        otpInputs[index + 1].focus();
+      }
     });
-  </script>
+
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const pastedData = e.clipboardData.getData('text/plain');
+
+      for (let i = 0; i < pastedData.length && index + i < otpInputs.length; i++) {
+        otpInputs[index + i].value = pastedData[i];
+      }
+
+
+      if (index + pastedData.length < otpInputs.length) {
+        otpInputs[index + pastedData.length].focus();
+      }
+    });
+  });
+</script>

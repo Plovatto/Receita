@@ -1,10 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const cadastroController = require('../controllers/cadastroController');
+const cadastroController = require("../controllers/cadastroController");
 
+router.get("/", cadastroController.renderizarFormulario);
 
-router.get('/', cadastroController.renderizarFormulario);
-
-router.post('/submit', cadastroController.criarNovoUsuario);
+router.post("/submit", cadastroController.criarNovoUsuario);
 
 module.exports = router;
