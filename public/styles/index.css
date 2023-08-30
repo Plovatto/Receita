@@ -83,6 +83,8 @@ input:hover {
   height: 1rem;
 }
 
+
+
 #adicionar {
   margin-left: 1vw;
   text-align: center;
@@ -253,12 +255,36 @@ a {
   margin: 0.5rem;
 }
 
-
+.quebrar{
+  display: flex;
+  flex-direction: row;
+  margin: auto 3.5%;
+}
 
 @media (max-width: 1280px) {
   #perfil {
     width: 3.2rem;
   }
+}
+@media (max-width: 468px) {
+#seila{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+.group{
+  min-width: 93vw;
+  margin: 0 auto;
+}
+#search-form{
+  min-width: 95vw;
+}
+#adicionar{
+  width: 95%;
+  flex: 1;
+  
+}
 }
 
 @media (max-width: 1070px) {

@@ -13,7 +13,7 @@
     </div>
 
     <br><br>
-    <form action="/receitas/receita/editar/<%= receita.id %>" class="meio" method="post" enctype="multipart/form-data">
+    <form action="/receitas/receita/editar/<%= receita.id %>"  method="post" enctype="multipart/form-data">
 
       <label>Título:</label>
       <div class="input-field col s6">
@@ -50,10 +50,10 @@
         <input class="form-control" type="file" name="imagem" accept="image/*" id="inputGroupFile03"
           aria-describedby="inputGroupFileAddon03" aria-label="Upload">
       </div>
-      <br>
-      <img src="/images/<%= receita.imagem %>" alt="Imagem da Receita" style="width: 300px; height: auto;">
+      <br><div class="meio">
+      <img src="/images/<%= receita.imagem %>" alt="Imagem da Receita" style="width: auto; height: auto;">
       <br><br>
-      <button class="btn bg-custom btn-block" type="submit">Salvar Edição</button>
+      <button class="btn bg-custom btn-block" type="submit">Salvar Edição</button></div>
       <br><br>
     </form>
 

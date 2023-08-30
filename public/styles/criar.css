@@ -187,6 +187,7 @@ input::placeholder {
   color: rgba(201, 61, 14, 0.50);
 }
 
+
 .input-field input[type=text] {
   border-bottom: 1px solid #C93D0E !important;
   box-shadow: 0 1px 0 0 #C93D0E !important;
@@ -316,8 +317,8 @@ img {
 
   button {
     width: 5rem;
-  }
-
+  } .input-field input[type="time"],
+  .input-group,
   .input-field input[type="text"],
   .input-field textarea {
     width: 100% !important;
@@ -344,15 +345,31 @@ img {
 
 @media (max-width: 500px) {
   .papper {
-    width: 25rem;
+    width:95vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    padding-left: 7%;
+    padding-right: 7%;
   }
 
+  .input-field input[type="time"],
+.input-group,
   .input-field input[type="text"],
   .input-field textarea {
     width: 100% !important;
+    padding-left: 10px;
   }
 }
-
+#inputGroupFileAddon03{
+  width: auto;
+  padding-left: 0;
+}
 @media (max-width: 1200px) {
   .bg-container {
     width: 50%;

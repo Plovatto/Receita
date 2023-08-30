@@ -22,7 +22,7 @@
       <br><br>
       <h1>Minhas receitas</h1>
 
-      <div class="d-flex justify-content-start mt-3">
+      <div id="seila" class="d-flex justify-content-start mt-3">
         <form action="/receitas" id="search-form" method="GET" class="d-flex">
           <div class="group">
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -35,8 +35,10 @@
             <input placeholder="Pesquisar por título" name="pesquisar" id="searchInput" type="search" class="input">
           </div>
         </form>
+        <div class="quebrar">
         <button id="adicionar"><a href="/receitas/criar-receita">Adicionar receita</a></button>
         <button id="perfil"><a href="/perfil"><img src="/images/perfil.svg"></a></button>
+      </div>
       </div>
 
       <br><br>
