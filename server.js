@@ -5,7 +5,7 @@ const expressLayouts = require("express-layouts");
 const path = require("path");
 const router = express.Router();
 const app = express();
-const port = 3300;
+
 const flash = require("express-flash");
 require("dotenv").config();
 
@@ -53,6 +53,3 @@ app.use("/logout", logoutRoutes);
 app.use("/receitas", receitasRoutes);
 app.use("/redefinir", redefinirRoutes);
 
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://127.0.0.1:${port}`);
-});
