@@ -15,30 +15,30 @@
     <br><br>
     <form action="/receitas/receita/editar/<%= receita.id %>" class="meio" method="post" enctype="multipart/form-data">
 
-      <label for="titulo">Título:</label>
+      <label>Título:</label>
       <div class="input-field col s6">
         <input type="text" id="titulo" name="titulo" class="validate " value="<%= receita.titulo %>">
       </div>
 
-      <label for="ingredientes">Ingredientes:</label>
+      <label>Ingredientes:</label>
       <div class="input-field col s12">
         <textarea id="ingredientes" name="ingredientes" rows="4"
           class="materialize-textarea"><%= receita.ingredientes %></textarea>
       </div>
 
-      <label for="modo_preparo">Modo de Preparo:</label>
+      <label>Modo de Preparo:</label>
       <div class="input-field col s12">
         <textarea id="modo_preparo" name="modo_preparo" rows="4"
           class="materialize-textarea"><%= receita.modo_preparo %></textarea>
       </div>
 
-      <label for="tempoPreparo">Tempo de Preparo</label>
+      <label>Tempo de Preparo</label>
       <div class="input-field col s6">
         <input type="time" name="tempo_preparo" value="<%= receita.tempo_preparo %>">
       </div>
 
 
-      <label for="descricao">Descrição da Receita:</label>
+      <label>Descrição da Receita:</label>
       <div class="input-field col s12">
         <textarea id="descricao" name="descricao" rows="4"
           class="materialize-textarea"><%= receita.descricao %></textarea>
