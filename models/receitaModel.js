@@ -1,4 +1,3 @@
-const pool = require("../dbConfig");
 
 const pesquisarReceitasPorTitulo = (titulo, callback) => {
   const searchTerm = `%${titulo}%`;

@@ -1,4 +1,4 @@
-const pool = require("../dbConfig");
+
 
 const buscarUsuarioPorId = (userId, callback) => {
   pool.query(

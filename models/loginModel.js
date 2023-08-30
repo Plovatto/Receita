@@ -1,4 +1,4 @@
-const pool = require("../dbConfig");
+
 const crypto = require("crypto");
 
 const verificarUsuario = (email, senha, callback) => {
