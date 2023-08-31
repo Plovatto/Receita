@@ -1,4 +1,6 @@
 const pool = require('./bancoconfig');
+
+
 const pesquisarReceitasPorTitulo = (titulo, callback) => {
   const searchTerm = `%${titulo}%`;
   pool.query(
@@ -28,18 +30,20 @@ const buscarReceitasPorUsuario = (usuarioId, callback) => {
   );
 };
 
-const buscarReceitaPorTitulo = (titulo, callback) => {
+const buscarReceitaPorId = (receitaId, callback) => {
   pool.query(
-    "SELECT * FROM receitas WHERE titulo = ?",
-    [titulo],
+    "SELECT * FROM receitas WHERE id = ?",
+    [receitaId],
     (error, results) => {
       if (error) {
         console.error("Erro na consulta ao banco de dados:", error);
         return callback(error, null);
       }
-
+  
       const receita = results[0];
-      callback(null, receita);
+      if (callback) {
+        callback(null, receita);
+      }
     }
   );
 };
@@ -53,11 +57,12 @@ const criarReceita = (receitaData, callback) => {
     usuario_id,
     imagem,
     tempo_preparo,
+    classificacao,
   } = receitaData;
 
   const query = `
-    INSERT INTO receitas (titulo, descricao, ingredientes, modo_preparo, usuario_id, imagem, tempo_preparo)
-    VALUES (?, ?, ?, ?, ?, ?, ?);
+    INSERT INTO receitas (titulo, descricao, ingredientes, modo_preparo, usuario_id, imagem, tempo_preparo, classificacao)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?);
   `;
   const values = [
     titulo,
@@ -67,6 +72,7 @@ const criarReceita = (receitaData, callback) => {
     usuario_id,
     imagem,
     tempo_preparo,
+    classificacao,
   ];
 
   pool.query(query, values, (error, results) => {
@@ -78,29 +84,6 @@ const criarReceita = (receitaData, callback) => {
     const novaReceitaId = results.insertId;
     callback(null, novaReceitaId);
   });
-};
-
-const buscarReceitaPorId = (receitaId, usuarioId, callback) => {
-  pool.query(
-    "SELECT * FROM receitas WHERE id = ? AND usuario_id = ?",
-    [receitaId, usuarioId],
-    (error, results) => {
-      if (error) {
-        console.error("Erro na consulta ao banco de dados:", error);
-        return callback(error, null);
-      }
-
-      if (results.length === 0) {
-        return callback(
-          "Receita não encontrada ou não pertence ao usuário logado.",
-          null
-        );
-      }
-
-      const receita = results[0];
-      callback(null, receita);
-    }
-  );
 };
 
 const excluirReceita = (receitaId, usuarioId, callback) => {
@@ -130,20 +113,22 @@ const atualizarReceita = (receitaId, receitaData, callback) => {
     titulo,
     descricao,
     ingredientes,
-    modoPreparo,
+    modo_preparo,
     imagem,
     tempo_preparo,
+    classificacao,
   } = receitaData;
 
   const query =
-    "UPDATE receitas SET titulo = ?, descricao = ?, ingredientes = ?, modo_preparo = ?, imagem = ?, tempo_preparo = ? WHERE id = ?";
+    "UPDATE receitas SET titulo = ?, descricao = ?, ingredientes = ?, modo_preparo = ?, imagem = ?, tempo_preparo = ?, classificacao = ? WHERE id = ?";
   const values = [
     titulo,
     descricao,
     ingredientes,
-    modoPreparo,
+    modo_preparo,
     imagem,
     tempo_preparo,
+    classificacao,
     receitaId,
   ];
 
@@ -164,6 +149,23 @@ const atualizarReceita = (receitaId, receitaData, callback) => {
   });
 };
 
+
+const buscarReceitaPorTitulo = (titulo, callback) => {
+  pool.query(
+    "SELECT * FROM receitas WHERE titulo = ?",
+    [titulo],
+    (error, results) => {
+      if (error) {
+        console.error("Erro na consulta ao banco de dados:", error);
+        return callback(error, null);
+      }
+
+      const receita = results[0];
+      callback(null, receita);
+    }
+  );
+};
+
 const verificarTituloExistentePorUsuario = (titulo, usuario_id, callback) => {
   const query =
     "SELECT COUNT(*) AS count FROM receitas WHERE titulo = ? AND usuario_id = ?";
@@ -175,6 +177,35 @@ const verificarTituloExistentePorUsuario = (titulo, usuario_id, callback) => {
   });
 };
 
+const buscarReceitasPublicas = (callback) => {
+  pool.query(
+    "SELECT * FROM receitas WHERE classificacao = 'pública' ORDER BY data_criacao DESC, id DESC",
+    (error, results) => {
+      if (error) {
+        console.error("Erro na consulta ao banco de dados:", error);
+        return callback(error, null);
+      }
+      callback(null, results);
+    }
+  );
+};
+
+const buscarReceitasPrivadasPorUsuario = (usuarioId, callback) => {
+  pool.query(
+    "SELECT * FROM receitas WHERE usuario_id = ? AND classificacao = 'privada' ORDER BY data_criacao DESC, id DESC",
+    [usuarioId],
+    (error, results) => {
+      if (error) {
+        console.error("Erro na consulta ao banco de dados:", error);
+        return callback(error, null);
+      }
+      callback(null, results);
+    }
+  );
+};
+
+
+
 module.exports = {
   buscarReceitasPorUsuario,
   criarReceita,
@@ -184,4 +215,6 @@ module.exports = {
   buscarReceitaPorTitulo,
   atualizarReceita,
   verificarTituloExistentePorUsuario,
+  buscarReceitasPublicas,
+  buscarReceitasPrivadasPorUsuario
 };

@@ -6,7 +6,7 @@
   <br>
 
   <div class="papper">
-    <% if (flashMessage && flashMessage.length> 0) { %>
+    <% if (flashMessage && flashMessage.length > 0) { %>
       <div class="alert alert-success alert-success d-flex align-items-center alert-dismissible fade show text-center"
         id="success-message" role="alert">
         <i id="i" class="material-icons">check_circle</i>
@@ -14,68 +14,69 @@
           <%= flashMessage[0] %>
         </div>
       </div>
+    <% } %>
+    <div class="back-button">
+      <a href="/receitas">
+        <i class="material-icons">cancel</i>
+      </a>
+    </div>
+    <div class="img">
+      <img src="/images/<%= receita.imagem %>" class="img-fluid imge" alt="Imagem da Receita">
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="mg">
+      <br>
+
+      <h1>
+        <%= receita.titulo %>
+      </h1>
+      <p><span>Receita criada em: </span>
+        <%= formatDate(receita.data_criacao) %>
+      </p>
+      
+      <br>
+      <strong>Tempo de preparo:</strong>
+      <br><br>
+      <div class="time">
+        <i id="time" class="material-icons">query_builder</i>
+        <p class="timetext">
+          <%= receita.tempo_preparo %>
+        </p>
+      </div>
+      <br>
+      <br>
+      <strong>Ingredientes:</strong>
+      <br><br>
+      <ul>
+        <% const ingredientes = typeof receita.ingredientes === 'string' ? receita.ingredientes.split('\n') : []; %>
+        <% for (let i = 0; i < ingredientes.length; i++) { %>
+          <li><%- ingredientes[i] %></li>
+        <% } %>
+      </ul>
+      <br> <br>
+      <p><strong>Modo de Preparo:</strong></p>
+      <br>
+      <ol>
+        <% const modoPreparoItems = typeof receita.modo_preparo === 'string' ? receita.modo_preparo.split('\n') : []; %>
+        <% for (let i = 0; i < modoPreparoItems.length; i++) { %>
+          <li><%- modoPreparoItems[i] %></li> <br>
+        <% } %>
+        <br>
+      </ol>
+
+      <br><br><br>
+      <% if (receita.usuario_id === req.session.userId) { %>
+        <div class="btnss">
+          <button class="btn bg-custom btn-block" type="submit">
+            <a href="/receitas/receita/editar/<%= receita.id %>">Editar Receita</a>
+          </button>
+          <form action="/receitas/receita/<%= receita.id %>/excluir" method="post">
+            <button class="btn bg-custom btn-block" type="submit">Excluir Receita</button>
+          </form>
+        </div>
       <% } %>
-        <div class="back-button">
-          <a href="/receitas">
-            <i class="material-icons">cancel</i>
-          </a>
-        </div>
-        <div class="img">
-          <img src="/images/<%= receita.imagem %>" class="img-fluid imge" alt="Imagem da Receita">
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class="mg">
-          <br>
-
-          <h1>
-            <%= receita.titulo %>
-          </h1>
-          <p><span>Receita criada em: </span>
-            <%= formatDate(receita.data_criacao) %>
-          </p>
-          <br>
-          <strong>Tempo de preparo:</strong>
-          <br><br>
-          <div class="time">
-            <i id="time" class="material-icons">query_builder</i>
-            <p class="timetext">
-              <%= receita.tempo_preparo %>
-            </p>
-          </div>
-          <br>
-          <br>
-          <strong>Ingredientes:</strong>
-          <br><br>
-          <ul>
-            <% const ingredientes=typeof receita.ingredientes==='string' ? receita.ingredientes.split('\n') : []; %>
-              <% for (let i=0; i < ingredientes.length; i++) { %>
-                <li><%- ingredientes[i] %></li>
-                <% } %>
-          </ul>
-          <br> <br>
-          <p><strong>Modo de Preparo:</strong></p>
-          <br>
-          <ol>
-            <% const modoPreparoItems=typeof receita.modo_preparo==='string' ? receita.modo_preparo.split('\n') : []; %>
-              <% for (let i=0; i < modoPreparoItems.length; i++) { %>
-                <li><%- modoPreparoItems[i] %></li> <br>
-                <% } %>
-                  <br>
-
-
-          </ol>
-
-          <br><br><br>
-          <div class="btnss">
-            <button class="btn bg-custom btn-block" type="submit">
-              <a href="/receitas/receita/editar/<%= receita.id %>">Editar Receita</a>
-            </button>
-            <form action="/receitas/receita/<%= receita.id %>/excluir" method="post">
-              <button class="btn bg-custom btn-block" type="submit">Excluir Receita</button>
-            </form>
-
-          </div>
-        </div><br>
+    </div>
+    <br>
   </div>
   <br><br>
   <script>
@@ -90,11 +91,6 @@
         }, 3000);
       }
     }
-    document.addEventListener('DOMContentLoaded', hideErrorMessage);
-    const formatTime = (timeInMinutes) => {
-      const hours = Math.floor(timeInMinutes / 60);
-      const minutes = timeInMinutes % 60;
-      return `${hours}h ${minutes}min`;
-    };
+
   </script>
 </body>

@@ -254,7 +254,10 @@ a {
 .card {
   margin: 0.5rem;
 }
-
+h3{
+  color: #C93D0E;
+  margin-left: 1%;
+}
 .quebrar{
   display: flex;
   flex-direction: row;

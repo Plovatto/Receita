@@ -5,7 +5,7 @@ const expressLayouts = require("express-layouts");
 const path = require("path");
 const router = express.Router();
 const app = express();
-
+const sqlstring = require('sqlstring');
 const flash = require("express-flash");
 require("dotenv").config();
 

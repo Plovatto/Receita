@@ -370,6 +370,16 @@ img {
   width: auto;
   padding-left: 0;
 }
+.form-select{
+  border: solid 2px #C93D0E;
+  color: #c93d0ec7;
+}
+
+.form-select:focus {
+  border-color: #c93d0e;
+  outline: none;
+  box-shadow: 0 0 20px rgba(201, 61, 14, 0.5);
+}
 @media (max-width: 1200px) {
   .bg-container {
     width: 50%;

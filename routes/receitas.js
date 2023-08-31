@@ -4,6 +4,9 @@ const multer = require("multer");
 const upload = multer({ dest: "./public/images/" });
 const receitasController = require("../controllers/receitasController");
 
+router.get("/receita/:id", receitasController.exibirDetalhesReceita);
+
+
 router.get("/criar-receita", receitasController.renderizarFormulario);
 router.post(
   "/criar-receita",
@@ -11,8 +14,10 @@ router.post(
   receitasController.criarReceita
 );
 
+router.get("/receitas/listar-publicas", receitasController.listarReceitasPublicas);
+router.get("/receitas/listar-privadas", receitasController.listarReceitasPrivadas);
+
 router.get("/", receitasController.exibirReceitas);
-router.get("/receita/:id", receitasController.exibirDetalhesReceita);
 
 router.get("/receita/editar/:id", receitasController.exibirFormularioEdicao);
 router.post(
