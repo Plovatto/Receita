@@ -10,24 +10,31 @@ const exibirReceitas = (req, res) => {
     receitaModel.buscarReceitasPublicas((error, receitasPublicas) => {
       if (error) {
         console.error("Erro ao buscar as receitas públicas:", error);
-        return res.status(500).send("Erro interno ao carregar receitas públicas.");
+        return res
+          .status(500)
+          .send("Erro interno ao carregar receitas públicas.");
       }
 
-      receitaModel.buscarReceitasPorUsuario(req.session.userId, (error, suasReceitas) => {
-        if (error) {
-          console.error("Erro ao buscar suas receitas:", error);
-          return res.status(500).send("Erro interno ao carregar suas receitas.");
-        }
+      receitaModel.buscarReceitasPorUsuario(
+        req.session.userId,
+        (error, suasReceitas) => {
+          if (error) {
+            console.error("Erro ao buscar suas receitas:", error);
+            return res
+              .status(500)
+              .send("Erro interno ao carregar suas receitas.");
+          }
 
-        res.render("index", {
-          receitasPublicas,
-          suasReceitas,
-          flash: { success: flashMessage, erro: flashError },
-          receitaExcluida,
-          isSearchRequest,
-          userId: req.session.userId, 
-        });
-      });
+          res.render("index", {
+            receitasPublicas,
+            suasReceitas,
+            flash: { success: flashMessage, erro: flashError },
+            receitaExcluida,
+            isSearchRequest,
+            userId: req.session.userId,
+          });
+        }
+      );
     });
   } else {
     res.redirect("/login");
@@ -39,7 +46,9 @@ const listarReceitasPublicas = (req, res) => {
     receitaModel.buscarReceitasPublicas((error, results) => {
       if (error) {
         console.error("Erro ao buscar receitas públicas:", error);
-        return res.status(500).send("Erro interno ao carregar receitas públicas.");
+        return res
+          .status(500)
+          .send("Erro interno ao carregar receitas públicas.");
       }
 
       res.render("listar-receitas-publicas", { receitasPublicas: results });
@@ -51,14 +60,19 @@ const listarReceitasPublicas = (req, res) => {
 
 const listarReceitasPrivadas = (req, res) => {
   if (req.session.loggedin) {
-    receitaModel.buscarReceitasPrivadasPorUsuario(req.session.userId, (error, results) => {
-      if (error) {
-        console.error("Erro ao buscar receitas privadas:", error);
-        return res.status(500).send("Erro interno ao carregar receitas privadas.");
-      }
+    receitaModel.buscarReceitasPrivadasPorUsuario(
+      req.session.userId,
+      (error, results) => {
+        if (error) {
+          console.error("Erro ao buscar receitas privadas:", error);
+          return res
+            .status(500)
+            .send("Erro interno ao carregar receitas privadas.");
+        }
 
-      res.render("listar-receitas-privadas", { receitasPrivadas: results });
-    });
+        res.render("listar-receitas-privadas", { receitasPrivadas: results });
+      }
+    );
   } else {
     res.redirect("/login");
   }
@@ -133,103 +147,115 @@ const exibirDetalhesReceita = (req, res) => {
       return res.status(404).send("Receita não encontrada.");
     }
 
-    const userId = req.session.userId; 
-    const isUserRecipe = receita.usuario_id === userId;
-    
+    const userId = req.session.userId;
 
+    receitaModel.buscarNomeUsuario(
+      receita.usuario_id,
+      (error, dadosUsuario) => {
+        if (error) {
+          console.error("Erro ao buscar o nome do usuário:", error);
+          return res
+            .status(500)
+            .send("Erro interno ao carregar o nome do usuário.");
+        }
 
-      const formatDate = (dateString) => {
-        const options = {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
+        const nomeUsuario = dadosUsuario.nome;
+        const sobrenomeUsuario = dadosUsuario.sobrenome;
+
+        const formatDate = (dateString) => {
+          const options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+          };
+          const date = new Date(dateString);
+          return date.toLocaleDateString("pt-BR", options);
         };
-        const date = new Date(dateString);
-        return date.toLocaleDateString("pt-BR", options);
-      };
 
-      const flashMessage = req.flash("success");
+        const flashMessage = req.flash("success");
 
-      res.render('detalhes-receita', { receita, formatDate, flashMessage, req });
-    }
-  );
+        res.render("detalhes-receita", {
+          receita,
+          nomeUsuario,
+          sobrenomeUsuario,
+          formatDate,
+          flashMessage,
+          req,
+        });
+      }
+    );
+  });
 };
 
 const exibirFormularioEdicao = (req, res) => {
   const receitaId = req.params.id;
 
-  receitaModel.buscarReceitaPorId(
-    receitaId,
-    (error, receita) => {
-      if (error) {
-        console.error("Erro ao buscar a receita:", error);
-        return res.status(500).send("Erro interno ao carregar a receita.");
-      }
-  
-      if (!receita || receita.usuario_id !== req.session.userId) {
-        return res
-          .status(404)
-          .send("Receita não encontrada ou não pertence ao usuário logado.");
-      }
-  
-      res.render("editar-receita", { receita });
+  receitaModel.buscarReceitaPorId(receitaId, (error, receita) => {
+    if (error) {
+      console.error("Erro ao buscar a receita:", error);
+      return res.status(500).send("Erro interno ao carregar a receita.");
     }
-  );
+
+    if (!receita || receita.usuario_id !== req.session.userId) {
+      return res
+        .status(404)
+        .send("Receita não encontrada ou não pertence ao usuário logado.");
+    }
+
+    res.render("editar-receita", { receita });
+  });
 };
 const atualizarReceita = (req, res) => {
   const receitaId = req.params.id;
   const modoPreparo = req.body.modo_preparo;
 
-  receitaModel.buscarReceitaPorId(
-    receitaId,
-    (error, receita) => {
+  receitaModel.buscarReceitaPorId(receitaId, (error, receita) => {
+    if (error) {
+      console.error("Erro ao buscar a receita:", error);
+      return res.status(500).send("Erro interno ao carregar a receita.");
+    }
+
+    if (!receita || receita.usuario_id !== req.session.userId) {
+      return res
+        .status(404)
+        .send("Receita não encontrada ou não pertence ao usuário logado.");
+    }
+
+    const receitaData = {
+      titulo: req.body.titulo,
+      ingredientes: req.body.ingredientes,
+      descricao: req.body.descricao,
+      modo_preparo: modoPreparo,
+      tempo_preparo: req.body.tempo_preparo,
+      classificacao: req.body.classificacao,
+    };
+
+    if (req.file) {
+      receitaData.imagem = req.file.filename;
+    } else {
+      receitaData.imagem = receita.imagem;
+    }
+
+    receitaModel.atualizarReceita(receitaId, receitaData, (error, result) => {
       if (error) {
-        console.error("Erro ao buscar a receita:", error);
-        return res.status(500).send("Erro interno ao carregar a receita.");
+        console.error("Erro ao atualizar a receita:", error);
+        return res.status(500).send("Erro interno ao atualizar a receita.");
       }
 
-      if (!receita || receita.usuario_id !== req.session.userId) {
-        return res
+      if (result === true) {
+        req.flash("success", "Receita atualizada com sucesso.");
+
+        res.redirect("/receitas/receita/" + receitaId);
+      } else {
+        res
           .status(404)
           .send("Receita não encontrada ou não pertence ao usuário logado.");
       }
-
-      const receitaData = {
-        titulo: req.body.titulo,
-        ingredientes: req.body.ingredientes,
-        descricao: req.body.descricao,
-        modo_preparo: modoPreparo,
-        tempo_preparo: req.body.tempo_preparo,
-        classificacao: req.body.classificacao,
-      };
-
-      if (req.file) {
-        receitaData.imagem = req.file.filename;
-      } else {
-        receitaData.imagem = receita.imagem;
-      }
-
-      receitaModel.atualizarReceita(receitaId, receitaData, (error, result) => {
-        if (error) {
-          console.error("Erro ao atualizar a receita:", error);
-          return res.status(500).send("Erro interno ao atualizar a receita.");
-        }
-
-        if (result === true) {
-          req.flash("success", "Receita atualizada com sucesso.");
-
-          res.redirect("/receitas/receita/" + receitaId);
-        } else {
-          res
-            .status(404)
-            .send("Receita não encontrada ou não pertence ao usuário logado.");
-        }
-      });
-    }
-  );
+    });
+  });
 };
 
 const excluirReceita = (req, res) => {
@@ -267,5 +293,5 @@ module.exports = {
   atualizarReceita,
   excluirReceita,
   listarReceitasPrivadas,
-  listarReceitasPublicas
+  listarReceitasPublicas,
 };

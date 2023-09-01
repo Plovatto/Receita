@@ -1,4 +1,4 @@
-const pool = require('./bancoconfig');
+const pool = require("./bancoconfig");
 
 const buscarUsuarioPorId = (userId, callback) => {
   pool.query(

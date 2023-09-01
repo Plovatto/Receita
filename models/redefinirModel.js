@@ -1,4 +1,4 @@
-const pool = require('./bancoconfig');
+const pool = require("./bancoconfig");
 const crypto = require("crypto");
 
 const findByEmail = (email) => {

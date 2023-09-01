@@ -12,43 +12,43 @@ const providerConfig = {
   },
 };
 
+const transporter = nodemailer.createTransport(providerConfig);
+
 async function sendCodeByEmail(email, code, nome) {
   try {
-    const transporter = nodemailer.createTransport(providerConfig);
+    const encodedEmail = encodeURIComponent(email);
 
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: email,
       subject: "Instruções para Redefinir sua Senha",
       text: `
-    Prezado(a) ${nome},
+        Prezado(a) ${nome},
 
-    Esperamos que esta mensagem o encontre bem. Você solicitou a redefinição de senha para a sua conta em nosso sistema. Para completar o processo, siga as instruções abaixo:
+        Esperamos que esta mensagem o encontre bem. Você solicitou a redefinição de senha para a sua conta em nosso sistema. Para completar o processo, siga as instruções abaixo:
 
-    Passo 1: Acesse a página de redefinição de senha
+        Passo 1: Acesse a página de redefinição de senha
+        Clique no link a seguir para acessar a página de redefinição de senha: https://saborselect.onrender.com/redefinir/enter-code?email=${encodedEmail}
 
-    Clique no link a seguir para acessar a página de redefinição de senha: http://127.0.0.1:3300/redefinir/enter-code?email
+        Passo 2: Insira o Código de Redefinição
+        Na página de redefinição de senha, insira o seguinte código:
 
-    Passo 2: Insira o Código de Redefinição
+        ${code}
 
-    Na página de redefinição de senha, insira o seguinte código:
-    ${code}
+        Passo 3: Crie uma Nova Senha
+        Após inserir o código de redefinição, você será direcionado(a) a criar uma nova senha segura para a sua conta. 
+        Certifique-se de escolher uma senha que seja única e que contenha uma combinação de letras maiúsculas, minúsculas, números e caracteres especiais.
 
-    Passo 3: Crie uma Nova Senha
+        Agradecemos a sua atenção e estamos à disposição para ajudar em caso de dúvidas ou problemas.
 
-    Após inserir o código de redefinição, você será direcionado(a) a criar uma nova senha segura para a sua conta. 
-    Certifique-se de escolher uma senha que seja única e que contenha uma combinação de letras maiúsculas, minúsculas, números e caracteres especiais.
-
-    Agradecemos a sua atenção e estamos à disposição para ajudar em caso de dúvidas ou problemas.
-
-    Atenciosamente,
-    SaborSelect.
-  `,
+        Atenciosamente,
+        SaborSelect.
+      `,
     };
     await transporter.sendMail(mailOptions);
-    console.log("Deu certo finalmente");
+    console.log("Email enviado com sucesso.");
   } catch (error) {
-    console.error("ACABA PELO AMOR DE DEUS", error);
+    console.error("Erro ao enviar o email:", error);
   }
 }
 

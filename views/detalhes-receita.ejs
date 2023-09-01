@@ -30,9 +30,12 @@
       <h1>
         <%= receita.titulo %>
       </h1>
-      <p><span>Receita criada em: </span>
-        <%= formatDate(receita.data_criacao) %>
-      </p>
+        <p><span>Receita criada por:</span>  <%= nomeUsuario %> <%= sobrenomeUsuario %> <span>
+          <br>em: </span><%= formatDate(receita.data_criacao) %></p>
+     
+      
+        
+     
       
       <br>
       <strong>Tempo de preparo:</strong>

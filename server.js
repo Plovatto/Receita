@@ -5,12 +5,16 @@ const expressLayouts = require("express-layouts");
 const path = require("path");
 const router = express.Router();
 const app = express();
-const sqlstring = require('sqlstring');
 const flash = require("express-flash");
 require("dotenv").config();
 
+
+
+
+
+
 app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(__dirname + "/public"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(expressLayouts);
@@ -53,7 +57,8 @@ app.use("/logout", logoutRoutes);
 app.use("/receitas", receitasRoutes);
 app.use("/redefinir", redefinirRoutes);
 
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta http://localhost:${PORT}`);

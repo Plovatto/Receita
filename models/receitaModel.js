@@ -1,5 +1,4 @@
-const pool = require('./bancoconfig');
-
+const pool = require("./bancoconfig");
 
 const pesquisarReceitasPorTitulo = (titulo, callback) => {
   const searchTerm = `%${titulo}%`;
@@ -39,7 +38,7 @@ const buscarReceitaPorId = (receitaId, callback) => {
         console.error("Erro na consulta ao banco de dados:", error);
         return callback(error, null);
       }
-  
+
       const receita = results[0];
       if (callback) {
         callback(null, receita);
@@ -149,7 +148,6 @@ const atualizarReceita = (receitaId, receitaData, callback) => {
   });
 };
 
-
 const buscarReceitaPorTitulo = (titulo, callback) => {
   pool.query(
     "SELECT * FROM receitas WHERE titulo = ?",
@@ -204,7 +202,22 @@ const buscarReceitasPrivadasPorUsuario = (usuarioId, callback) => {
   );
 };
 
+const buscarNomeUsuario = (usuarioId, callback) => {
+  const sql = "SELECT nome, sobrenome FROM usuarios WHERE id = ?";
+  pool.query(sql, [usuarioId], (error, results) => {
+    if (error) {
+      return callback(error, null);
+    }
+    if (results.length === 0) {
+      return callback(null, null);
+    }
 
+    callback(null, {
+      nome: results[0].nome,
+      sobrenome: results[0].sobrenome,
+    });
+  });
+};
 
 module.exports = {
   buscarReceitasPorUsuario,
@@ -216,5 +229,6 @@ module.exports = {
   atualizarReceita,
   verificarTituloExistentePorUsuario,
   buscarReceitasPublicas,
-  buscarReceitasPrivadasPorUsuario
+  buscarReceitasPrivadasPorUsuario,
+  buscarNomeUsuario,
 };

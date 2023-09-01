@@ -6,7 +6,6 @@ const receitasController = require("../controllers/receitasController");
 
 router.get("/receita/:id", receitasController.exibirDetalhesReceita);
 
-
 router.get("/criar-receita", receitasController.renderizarFormulario);
 router.post(
   "/criar-receita",
@@ -14,8 +13,14 @@ router.post(
   receitasController.criarReceita
 );
 
-router.get("/receitas/listar-publicas", receitasController.listarReceitasPublicas);
-router.get("/receitas/listar-privadas", receitasController.listarReceitasPrivadas);
+router.get(
+  "/receitas/listar-publicas",
+  receitasController.listarReceitasPublicas
+);
+router.get(
+  "/receitas/listar-privadas",
+  receitasController.listarReceitasPrivadas
+);
 
 router.get("/", receitasController.exibirReceitas);
 

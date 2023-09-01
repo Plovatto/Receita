@@ -101,7 +101,7 @@ h1 {
 .papper {
 
   transition: min-height 0.5s ease;
-  min-height: auto;
+  height: auto;
   position: relative;
   display: flex;
   flex-direction: column;
