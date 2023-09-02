@@ -14,7 +14,7 @@ const findByEmail = (email) => {
   });
 };
 
-const updateUserCode = async (email, code) => {
+const updateUserCode = async (email, code, ) => {
   await pool.query(
     "UPDATE usuarios SET codigo_confirmacao = ? WHERE email = ?",
     [code, email]
