@@ -1,4 +1,4 @@
-const pool = require("../bancoconfig");
+const pool = require("../models/bancoconfig");
 const crypto = require("crypto");
 
 const criarNovoUsuarioNoBanco = (

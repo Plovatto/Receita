@@ -1,4 +1,4 @@
-const pool = require("../bancoconfig");
+const pool = require("../models/bancoconfig");
 
 const pesquisarReceitasPorTitulo = (titulo, callback) => {
   const searchTerm = `%${titulo}%`;
